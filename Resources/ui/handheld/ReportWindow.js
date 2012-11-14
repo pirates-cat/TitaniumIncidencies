@@ -56,31 +56,23 @@ function ReportWindow(title) {
 	var scrollable = Ti.UI.createScrollView({layout:'vertical'});
 	self.add(scrollable);
 	self.scrollable = scrollable;
-
-	var buttonGetAddress = Ti.UI.createButton({
-		height:55,
-		left:10,
-		right:10,
-		top:10,
-		title:L('obtenir_posicio_actual')
-	});
-	scrollable.add(buttonGetAddress);
+	
 	// codi provincia
 	var labelProvincia = self.createLabel(L('provincia'));
 	scrollable.add(labelProvincia);
-	var textProvincia = self.createTextField("hh","");
+	var textProvincia = self.createTextField("","");
 	scrollable.add(textProvincia);
 
 	// codi poblacio
 	var labelPoblacio = self.createLabel(L('poblacio'));
 	scrollable.add(labelPoblacio);
-	var textPoblacio = self.createTextField("hh","");
+	var textPoblacio = self.createTextField("","");
 	scrollable.add(textPoblacio);	
 	
 	// colegi electoral
 	var labelColegi = self.createLabel(L('collegi_electoral'));
 	scrollable.add(labelColegi);
-	var textColegi = self.createTextField("h",L('exemple_carrer'));
+	var textColegi = self.createTextField("",L('exemple_carrer'));
 	scrollable.add(textColegi);
 	
 	// partit afectat
@@ -104,19 +96,19 @@ function ReportWindow(title) {
 	// reportador
 	var labelReportador = self.createLabel(L('nom_del_reportador'));
 	scrollable.add(labelReportador);
-	var textReportador = self.createTextField("hh","");
+	var textReportador = self.createTextField("","");
 	scrollable.add(textReportador);
 	
 	// telefon/email reportador
 	var labelTelefon = self.createLabel(L('tel_reportador'));
 	scrollable.add(labelTelefon);
-	var textTelefon = self.createTextField("f","");
+	var textTelefon = self.createTextField("","");
 	scrollable.add(textTelefon);
 	
 	// comentaris reportador
 	var labelComentaris = self.createLabel(L('comentaris'));
 	scrollable.add(labelComentaris);
-	var textComentari = self.createTextField("f","");
+	var textComentari = self.createTextField("","");
 	scrollable.add(textComentari);
 	
 	var horizontalView = Ti.UI.createView({layout:"horizontal",height:55,bottom:10, top:10, right:10});
@@ -209,22 +201,15 @@ function ReportWindow(title) {
 		textTelefon.value = "";
 		textComentari.value = "";
 	});
-	
+
 	self.addEventListener('focus',function(){
-		Ti.API.info("focus!!");
-	});
-	buttonGetAddress.addEventListener('click',function(){
 		if (Ti.Geolocation.locationServicesEnabled === true){
 			Ti.Geolocation.accuracy = Ti.Geolocation.ACCURACY_BEST;
 			Ti.Geolocation.purpose =L('obtenir_posicio');
-			//
-			// GET CURRENT POSITION - THIS FIRES ONCE
-			//
+
 			Ti.Geolocation.getCurrentPosition(function(e){
 				if (!e.success || e.error){
-					currentLocation.text = 'error: ' + JSON.stringify(e.error);
-					Ti.API.info("Code translation: "+translateErrorCode(e.code));
-					alert('error ' + JSON.stringify(e.error));
+					Ti.API.debug('error ' + JSON.stringify(e.error));
 					return;
 				}
 		
@@ -233,37 +218,14 @@ function ReportWindow(title) {
 				var accuracy = e.coords.accuracy;
 				
 				self.coords = 'long{' + longitude.toFixed(6) + '},lat{' + latitude.toFixed(6) + "},accuracy{" + accuracy + "}";
-				Ti.Geolocation.reverseGeocoder(latitude,longitude,function(evt){
-					if (evt.success) {
-						var places = evt.places;
-						if (places && places.length) {
-							//reverseGeo.text = places[0].address;
-							var firstPlace = places[0];
-							//textProvincia.value = "";
-							textPoblacio.value = firstPlace.city;
-						} else {
-							//reverseGeo.text = "No address found";
-						}
-						Ti.API.info("reverse geolocation result = "+JSON.stringify(evt));
-						textComentari.value ="reverse geolocation result = "+JSON.stringify(evt);
-					}
-					else {
-						Ti.UI.createAlertDialog({
-							title:'Error',
-							message:evt.error
-						}).show();
-						Ti.API.info("Code translation: "+translateErrorCode(e.code));
-					}
-				});	
-		
-				Ti.API.info('geo - current location: long ' + longitude.toFixed(6) + ' lat ' + latitude.toFixed(6) + ' accuracy ' + accuracy);
+				Ti.API.debug('geo - current location: long ' + longitude.toFixed(6) + ' lat ' + latitude.toFixed(6) + ' accuracy ' + accuracy);
 	
 			});
 		}else{
-			Ti.API.info('locationServices not Enabled');
+			Ti.API.debug('locationServices not Enabled');
 		}
 	});
-	buttonGetAddress.fireEvent('click');
+	
 	return self;
 };
 
