@@ -6,7 +6,7 @@ function SearchWindow(title) {
 		layout:'vertical'
 	});
 	
-	MenuView = require('ui/handheld/MenuView');
+	MenuView = require('ui/common/MenuView');
 	var menuView = new MenuView(L('search'));
 	self.add(menuView);
 	

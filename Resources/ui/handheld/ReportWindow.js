@@ -1,11 +1,13 @@
 function ReportWindow(title) {
+	Ti.App.dB.open();
+	
 	var self = Ti.UI.createWindow({
 		title:title,
 		backgroundColor:'black',
 		backgroundImage:"images/background.png",
 		layout:'vertical'
 	});
-
+	
 	self.createLabel = function(text){
 		return Ti.UI.createLabel({
 			height:44,
@@ -52,7 +54,7 @@ function ReportWindow(title) {
 
 		return picker;
 	};
-	MenuView = require('ui/handheld/MenuView');
+	MenuView = require('ui/common/MenuView');
 	var menuView = new MenuView(L('home'));
 	self.add(menuView);
 	
@@ -64,7 +66,7 @@ function ReportWindow(title) {
 	var labelProvincia = self.createLabel(L('provincia'));
 	scrollable.add(labelProvincia);
 	// TODO: unharcode provinces
-	var arrayProvincies = ['Barcelona','Girona','Lleida','Tarragona'];
+	var arrayProvincies = Ti.App.dB.getProvinces();// ['Barcelona','Girona','Lleida','Tarragona'];
 	var pickerProvincia = self.createPicker(arrayProvincies);
 	scrollable.add(pickerProvincia);
 
@@ -194,7 +196,7 @@ function ReportWindow(title) {
 		width:'100',
 		title:L('reset'),
 		left:10,
-		bottom:10
+		//bottom:10
 	});
 	if (Titanium.Platform.name == 'iPhone OS'){
 		scrollable.add(buttonClear);

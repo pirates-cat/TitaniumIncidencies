@@ -4,6 +4,8 @@
 	//Ti.App.Properties.setString('server_url', 'http://192.168.1.55:8888/incidencies/');
 	Ti.App.Properties.setString('server_url', 'http://confederatic.pirata.cat/incidencies/');
 	
+	Database = require('ui/common/Database');
+	Ti.App.dB = new Database();
 	
 	var osname = Ti.Platform.osname,
 		version = Ti.Platform.version,

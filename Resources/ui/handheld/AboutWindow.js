@@ -29,7 +29,7 @@ function AboutWindow(title) {
 		return view;
 	}
 	
-	MenuView = require('ui/handheld/MenuView');
+	MenuView = require('ui/common/MenuView');
 	var menuView = new MenuView(L('about'));
 	self.add(menuView);
 	
