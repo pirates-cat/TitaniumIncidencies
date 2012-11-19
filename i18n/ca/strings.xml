@@ -31,9 +31,7 @@
     <string name="obtenir_posicio_actual">Obtenir adreça actual</string>
     <string name="report_enviat_ok">Informe enviat!</string>
     <string name="enviat_titol"></string>
-    
     <string name="about_this">Quant a:</string>
-    
     <string name="author">Programat per:</string>
     <string name="author_name">Ignasi Artigas</string>
     <string name="special_thanks">Agraïments:</string>
@@ -42,7 +40,4 @@
     <string name="license_type">GPL 2.0</string>
     <string name="sourcecode">Codi font:</string>
 	<string name="sourcecode_url">https://github.com/pirata-cat/TitaniumIncidencies</string>
-
-    
-    
   </resources>

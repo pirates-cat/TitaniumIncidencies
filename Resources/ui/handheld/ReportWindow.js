@@ -52,6 +52,9 @@ function ReportWindow(title) {
 
 		return picker;
 	};
+	MenuView = require('ui/handheld/MenuView');
+	var menuView = new MenuView(L('home'));
+	self.add(menuView);
 	
 	var scrollable = Ti.UI.createScrollView({layout:'vertical'});
 	self.add(scrollable);
@@ -60,8 +63,10 @@ function ReportWindow(title) {
 	// codi provincia
 	var labelProvincia = self.createLabel(L('provincia'));
 	scrollable.add(labelProvincia);
-	var textProvincia = self.createTextField("","");
-	scrollable.add(textProvincia);
+	// TODO: unharcode provinces
+	var arrayProvincies = ['Barcelona','Girona','Lleida','Tarragona'];
+	var pickerProvincia = self.createPicker(arrayProvincies);
+	scrollable.add(pickerProvincia);
 
 	// codi poblacio
 	var labelPoblacio = self.createLabel(L('poblacio'));
@@ -134,7 +139,7 @@ function ReportWindow(title) {
 	self.coords = "unknown";
 	buttonReport.addEventListener('click',function(){
 		
-		if (textPoblacio.value == "" || textProvincia.value == "" || textColegi.value == "" || textReportador.value =="" || textTelefon.value == ""){
+		if (textPoblacio.value == "" || textColegi.value == "" || textReportador.value =="" || textTelefon.value == ""){
 			var dialog = Ti.UI.createAlertDialog({
 				message: L("error_validacio_report"),
 				ok: 'Ok',
@@ -169,7 +174,7 @@ function ReportWindow(title) {
 			xhr.open("POST",serverUrl);
 			var dataToSend ={
 				'partit_afectat':pickerPartit.valor, 
-				'provincia':textProvincia.value,
+				'provincia':pickerProvincia.valor,
 				'poblacio':textPoblacio.value,
 				'coords':self.coords,
 				'deviceid': Ti.Platform.id,
@@ -191,10 +196,13 @@ function ReportWindow(title) {
 		left:10,
 		bottom:10
 	});
-	scrollable.add(buttonClear);
+	if (Titanium.Platform.name == 'iPhone OS'){
+		scrollable.add(buttonClear);
+	}else{
+		horizontalView.add(buttonClear);
+	}
 	
 	buttonClear.addEventListener('click',function(){
-		textProvincia.value = "";
 		textPoblacio.value = "";
 		textColegi.value = "";
 		textReportador.value ="";

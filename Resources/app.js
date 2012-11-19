@@ -1,7 +1,9 @@
 // This is a single context application with mutliple windows in a stack
 (function() {
 	//determine platform and form factor and render approproate components
-	Ti.App.Properties.setString('server_url', 'http://192.168.1.55:8888/incidencies/');
+	//Ti.App.Properties.setString('server_url', 'http://192.168.1.55:8888/incidencies/');
+	Ti.App.Properties.setString('server_url', 'http://confederatic.pirata.cat/incidencies/');
+	
 	
 	var osname = Ti.Platform.osname,
 		version = Ti.Platform.version,

@@ -1,8 +1,14 @@
 function SearchWindow(title) {
 	var self = Ti.UI.createWindow({
 		title:title,
-		backgroundColor:'white'
+		backgroundColor:'black',
+		backgroundImage:"images/background.png",
+		layout:'vertical'
 	});
+	
+	MenuView = require('ui/handheld/MenuView');
+	var menuView = new MenuView(L('search'));
+	self.add(menuView);
 	
 	var button = Ti.UI.createButton({
 		height:44,
