@@ -13,10 +13,10 @@
     <string name="provincia">Province *</string>
     <string name="poblacio">City *</string>
     <string name="codipostal">Postal code *</string>
-    <string name="collegi_electoral">Polling station *</string>
+    <string name="collegi_electoral">Electoral College *</string>
     <string name="causa">Reason *</string>
-    <string name="nom_del_reportador">Reporter name *</string>
-    <string name="tel_reportador">Informer's telephone/email *</string>
+    <string name="nom_del_reportador">Reporter's name *</string>
+    <string name="tel_reportador">Reporter's phone number/e-mail *</string>
     <string name="enviar">Send</string>
     <string name="exemple_carrer">Street_name + num</string>
     <string name="comentaris">Comments</string>
