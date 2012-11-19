@@ -13,7 +13,7 @@
     <string name="provincia">Province *</string>
     <string name="poblacio">City *</string>
     <string name="codipostal">Postal code *</string>
-    <string name="collegi_electoral">Electoral College *</string>
+    <string name="collegi_electoral">Polling station *</string>
     <string name="causa">Reason *</string>
     <string name="nom_del_reportador">Reporter's name *</string>
     <string name="tel_reportador">Reporter's phone number/e-mail *</string>
