@@ -21,12 +21,12 @@
     <string name="exemple_carrer">C/ nom_carrer + num</string>
     <string name="comentaris">Comentaris</string>
     <string name="error_validacio_report">S'han d'omplir tots els camps obligatoris (*) per poder enviar l'informe</string>
-    <string name="send_report_error">S'ha produït un error ale servidor en enviar l'informe</string>
+    <string name="send_report_error">S'ha produït un error al servidor en enviar l'informe</string>
     <string name="obtenir_posicio">Per obtenir l'adreça actual</string>
     <string name="request_incomplete">El servidor informa que li falten dades</string>
-    <string name="request_fail">El servidor informa que hi ha hagut un error</string>
+    <string name="request_fail">El servidor informa que s'ha produït un error</string>
     <string name="request_denied">Access denegat</string>
-    <string name="obtenir_posicio_actual">Obtè l'adreça actual</string>
+    <string name="obtenir_posicio_actual">Obté l'adreça actual</string>
     <string name="report_enviat_ok">S'ha enviat l'informe!</string>
     <string name="enviat_titol"></string>
     <string name="enviant">S'està enviant l'informe</string>
