@@ -87,7 +87,26 @@ function ReportWindow(title) {
 	scrollable.add(labelPartit);
 	
 	// TODO: unharcode partits list
-	var arrayPartits = ['PIRATA.CAT','Escons en blanc','CUP'];
+	var arrayPartits = [
+	"Convergència i Unió (CiU)",
+	"Ciutadans - Ciudadanos (Cs)",
+	"Candidatura d'Unitat Popular - Alternativa d'Esquerres (CUP)",
+	"Escons en Blanc (EB)",
+	"Esquerra Republicana de Catalunya - Catalunya Sí (ERC)",
+	"Hartos.org (FARTS.CAT)",
+	"Iniciativa per Catalunya Verds (ICV-EUiA)",
+	"Partit Animalista Contra el Maltractament Animal (PACMA)",
+	"Pirates de Catalunya (PIRATA.CAT)",
+	"Partit Popular (PPC)",
+	"Partit Republicà d'Esquerres - Izquierda Republicana (PRE-IR)",
+	"Partit Socialista de Catalunya (PSC)",
+	"Plataforma per Catalunya (PxC)",
+	"Solidaritat Catalana (SI)",
+	"Socialistes i Republicans - Pel dret a decidir (SiR)",
+	"Unificación Comunista de España (UCE)",
+	"Unión, Progreso y Democracia (UPyD)",
+	"Vía Democrática (VD)"
+	];
 	var pickerPartit = self.createPicker(arrayPartits);
 	scrollable.add(pickerPartit);
 	
