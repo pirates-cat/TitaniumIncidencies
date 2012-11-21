@@ -37,9 +37,11 @@ function ReportWindow(title) {
 		var picker = Ti.UI.createPicker({
 			left:10,
 			right:10,
-			visibleItems: 1,
 			type : Ti.UI.PICKER_TYPE_PLAIN
 		});
+		picker.setSelectedValue = function(value){
+			picker.valor = value;
+		}
 		
 		var data = [];
 		for (var id in arrayData){
@@ -47,13 +49,14 @@ function ReportWindow(title) {
 		}
 		picker.selectionIndicator = true;
 		picker.add(data);
-		picker.valor = data[0].title;
+		picker.setSelectedValue(data[0].title);
+		
 		picker.addEventListener('change',function(e){
-			picker.valor = e.row.title;
+			picker.setSelectedValue(e.row.title);
 		});
-
 		return picker;
 	};
+	
 	MenuView = require('ui/common/MenuView');
 	var menuView = new MenuView(L('home'));
 	self.add(menuView);
@@ -65,15 +68,19 @@ function ReportWindow(title) {
 	// codi provincia
 	var labelProvincia = self.createLabel(L('provincia'));
 	scrollable.add(labelProvincia);
-	// TODO: unharcode provinces
-	var arrayProvincies = Ti.App.dB.getProvinces();// ['Barcelona','Girona','Lleida','Tarragona'];
-	var pickerProvincia = self.createPicker(arrayProvincies);
+	
+	self.arrayProvincies = Ti.App.dB.getProvinces();
+	var pickerProvincia = self.createPicker(self.arrayProvincies);
 	scrollable.add(pickerProvincia);
 
 	// codi poblacio
 	var labelPoblacio = self.createLabel(L('poblacio'));
 	scrollable.add(labelPoblacio);
+	
 	var textPoblacio = self.createTextField("","");
+	//self.arrayInicialCities = Ti.App.dB.getCities(self.arrayProvincies[0]);
+	//self.arrayCities = self.arrayInicialCities;
+	//var pickerPoblacio = self.createPicker(self.arrayCities);
 	scrollable.add(textPoblacio);	
 	
 	// colegi electoral
@@ -87,27 +94,27 @@ function ReportWindow(title) {
 	scrollable.add(labelPartit);
 	
 	// TODO: unharcode partits list
-	var arrayPartits = [
-	"Convergència i Unió (CiU)",
-	"Ciutadans - Ciudadanos (Cs)",
-	"Candidatura d'Unitat Popular - Alternativa d'Esquerres (CUP)",
-	"Escons en Blanc (EB)",
-	"Esquerra Republicana de Catalunya - Catalunya Sí (ERC)",
-	"Hartos.org (FARTS.CAT)",
-	"Iniciativa per Catalunya Verds (ICV-EUiA)",
-	"Partit Animalista Contra el Maltractament Animal (PACMA)",
-	"Pirates de Catalunya (PIRATA.CAT)",
-	"Partit Popular (PPC)",
-	"Partit Republicà d'Esquerres - Izquierda Republicana (PRE-IR)",
-	"Partit Socialista de Catalunya (PSC)",
-	"Plataforma per Catalunya (PxC)",
-	"Solidaritat Catalana (SI)",
-	"Socialistes i Republicans - Pel dret a decidir (SiR)",
-	"Unificación Comunista de España (UCE)",
-	"Unión, Progreso y Democracia (UPyD)",
-	"Vía Democrática (VD)"
+	self.arrayPartits = [
+		"Convergència i Unió (CiU)",
+		"Ciutadans - Ciudadanos (Cs)",
+		"Candidatura d'Unitat Popular - Alternativa d'Esquerres (CUP)",
+		"Escons en Blanc (EB)",
+		"Esquerra Republicana de Catalunya - Catalunya Sí (ERC)",
+		"Hartos.org (FARTS.CAT)",
+		"Iniciativa per Catalunya Verds (ICV-EUiA)",
+		"Partit Animalista Contra el Maltractament Animal (PACMA)",
+		"Pirates de Catalunya (PIRATA.CAT)",
+		"Partit Popular (PPC)",
+		"Partit Republicà d'Esquerres - Izquierda Republicana (PRE-IR)",
+		"Partit Socialista de Catalunya (PSC)",
+		"Plataforma per Catalunya (PxC)",
+		"Solidaritat Catalana (SI)",
+		"Socialistes i Republicans - Pel dret a decidir (SiR)",
+		"Unificación Comunista de España (UCE)",
+		"Unión, Progreso y Democracia (UPyD)",
+		"Vía Democrática (VD)"
 	];
-	var pickerPartit = self.createPicker(arrayPartits);
+	var pickerPartit = self.createPicker(self.arrayPartits);
 	scrollable.add(pickerPartit);
 	
 	// causa incidencia
@@ -115,9 +122,19 @@ function ReportWindow(title) {
 	scrollable.add(labelCausa);
 	
 	// TODO: unhardcode causes list
-	var arrayCauses = ['Absència de paperetes','Paperetes ocultes o no accessibles','Persona condicionant el vot', 'Persona impedint l\'exercici del vot','Altres'];
-	var pickerCausa =self.createPicker(arrayCauses);
+	self.arrayCauses = [
+		'Absència de paperetes',
+		'Paperetes ocultes o no accessibles',
+		'Persona condicionant el vot', 
+		'Persona impedint l\'exercici del vot',
+		'Altres'
+	];
+	var pickerCausa =self.createPicker(self.arrayCauses);
 	scrollable.add(pickerCausa);
+	
+	var data1 = [];
+	data1.push(Ti.UI.createPickerRow({title:"test"}));
+	pickerCausa.add(data1);
 	
 	// reportador
 	var labelReportador = self.createLabel(L('nom_del_reportador'));
@@ -229,6 +246,12 @@ function ReportWindow(title) {
 		textReportador.value ="";
 		textTelefon.value = "";
 		textComentari.value = "";
+		pickerPartit.setSelectedRow(0,0);
+		pickerPartit.setSelectedValue(self.arrayPartits[0]);
+		pickerProvincia.setSelectedRow(0,0);
+		pickerProvincia.setSelectedValue(self.arrayProvincies[0]);
+		pickerCausa.setSelectedRow(0,0);
+		pickerCausa.setSelectedValue(self.arrayCauses[0]);
 	});
 
 	self.addEventListener('focus',function(){
