@@ -9,14 +9,13 @@
     <string name="app_name">Incidencias</string>
     <string name="menu_settings">Configuración</string>
     <string name="title_activity_partit_pirata">Gestión de incidencias</string>
-    <string name="partit_afectat">Partido afectado *</string>
-    <string name="provincia">Provincia *</string>
-    <string name="poblacio">Población *</string>
-    <string name="codipostal">Código Postal *</string>
-    <string name="collegi_electoral">Colegio electoral *</string>
-    <string name="causa">Motivo *</string>
-    <string name="nom_del_reportador">Nombre de quien ha dado el aviso *</string>
-    <string name="tel_reportador">Teléfono/Correo-e de quien ha dado el aviso *</string>
+    <string name="partit_afectat">Partido afectado</string>
+    <string name="provincia">Provincia</string>
+    <string name="poblacio">Población</string>
+    <string name="collegi_electoral">Colegio electoral</string>
+    <string name="causa">Motivo</string>
+    <string name="nom_del_reportador">Nombre de quien ha dado el aviso</string>
+    <string name="tel_reportador">Teléfono/Correo-e de quien ha dado el aviso</string>
     <string name="enviar">Enviar</string>
     <string name="exemple_carrer">C/ nombre_calle, núm</string>
     <string name="comentaris">Comentarios</string>
@@ -38,5 +37,6 @@
     <string name="license">Licencia del código:</string>
     <string name="license_type">GPL 2.0</string>
     <string name="sourcecode">Código fuente:</string>
-	<string name="sourcecode_url">https://github.com/pirata-cat/TitaniumIncidencies</string>
+    <string name="sourcecode_url">https://github.com/pirata-cat/TitaniumIncidencies</string>
+    <string name="dropdown_select">Elegir </string>
   </resources>
