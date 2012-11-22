@@ -9,14 +9,13 @@
     <string name="app_name">Incidències</string>
     <string name="menu_settings">Paràmetres</string>
     <string name="title_activity_partit_pirata">Gestió d'incidències</string>
-    <string name="partit_afectat">Partit afectat *</string>
-    <string name="provincia">Província *</string>
-    <string name="poblacio">Població *</string>
-    <string name="codipostal">Codi Postal *</string>
-    <string name="collegi_electoral">Col·legi electoral *</string>
-    <string name="causa">Causa *</string>
-    <string name="nom_del_reportador">Nom del notificador *</string>
-    <string name="tel_reportador">Telèfon/Correu-e del notificador *</string>
+    <string name="partit_afectat">Partit afectat</string>
+    <string name="provincia">Província</string>
+    <string name="poblacio">Població</string>
+    <string name="collegi_electoral">Col·legi electoral</string>
+    <string name="causa">Causa</string>
+    <string name="nom_del_reportador">Nom del notificador</string>
+    <string name="tel_reportador">Telèfon/Correu-e del notificador</string>
     <string name="enviar">Envia</string>
     <string name="exemple_carrer">C/ nom_carrer + num</string>
     <string name="comentaris">Comentaris</string>
@@ -38,5 +37,6 @@
     <string name="license">Llicència del codi:</string>
     <string name="license_type">GPL 2.0</string>
     <string name="sourcecode">Codi font:</string>
-	<string name="sourcecode_url">https://github.com/pirata-cat/TitaniumIncidencies</string>
+    <string name="sourcecode_url">https://github.com/pirata-cat/TitaniumIncidencies</string>
+    <string name="dropdown_select">Tria </string>
   </resources>
