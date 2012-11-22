@@ -17,7 +17,6 @@
     <string name="nom_del_reportador">Nom del notificador</string>
     <string name="tel_reportador">Telèfon/Correu-e del notificador</string>
     <string name="enviar">Envia</string>
-    <string name="exemple_carrer">C/ nom_carrer + num</string>
     <string name="comentaris">Comentaris</string>
     <string name="error_validacio_report">S'han d'omplir tots els camps obligatoris (*) per poder enviar l'informe</string>
     <string name="send_report_error">S'ha produït un error al servidor en enviar l'informe</string>

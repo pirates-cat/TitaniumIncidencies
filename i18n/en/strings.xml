@@ -17,7 +17,6 @@
     <string name="nom_del_reportador">Reporter's name</string>
     <string name="tel_reportador">Reporter's phone number/e-mail</string>
     <string name="enviar">Send</string>
-    <string name="exemple_carrer">Street_name + num</string>
     <string name="comentaris">Comments</string>
     <string name="error_validacio_report">All compulsory (*) fields must be filled to be able to send the report</string>
     <string name="send_report_error">Server error while sending report</string>

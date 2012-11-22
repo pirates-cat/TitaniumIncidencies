@@ -17,7 +17,6 @@
     <string name="nom_del_reportador">Nombre de quien ha dado el aviso</string>
     <string name="tel_reportador">Teléfono/Correo-e de quien ha dado el aviso</string>
     <string name="enviar">Enviar</string>
-    <string name="exemple_carrer">C/ nombre_calle, núm</string>
     <string name="comentaris">Comentarios</string>
     <string name="error_validacio_report">Deben rellenarse todos los campos obligatorios (*) para poder enviar el informe</string>
     <string name="send_report_error">Error del servidor al enviar el informe</string>

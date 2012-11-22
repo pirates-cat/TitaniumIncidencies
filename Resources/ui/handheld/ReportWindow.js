@@ -71,7 +71,7 @@ function ReportWindow(title) {
 			if (selectText!= null){
 				titleText = selectText;
 			}
-			picker.add(Ti.UI.createPickerRow({title:titleText,valor:""}));
+			picker.add(Ti.UI.createPickerRow({title:titleText+ "                                                        ",valor:""}));
 			var rowText = null;	
 			var rowArray = [];
 			for (var id in arrayData){
@@ -82,7 +82,7 @@ function ReportWindow(title) {
 				}
 				 rowArray.push(Ti.UI.createPickerRow({
 				 	
-					title:rowText + "                                                        ", // nasty android bug which centers text in pickers sometimes
+					title:rowText + "                                                        ", // nasty titanium bug which centers text in pickers
 					valor:arrayData[id]
 				}));
 				
@@ -108,7 +108,8 @@ function ReportWindow(title) {
 		returnedView.resetPicker(arrayData);
 		return returnedView;
 	};
-	
+	var stringRequired = " *"; // this will indicate the required fields
+	var stringDropdown = L('dropdown_select'); // Select...
 	MenuView = require('ui/common/MenuView');
 	var menuView = new MenuView(L('home'));
 	self.add(menuView);
@@ -118,37 +119,33 @@ function ReportWindow(title) {
 	self.scrollable = scrollable;
 	
 	// codi provincia
-	var labelProvincia = self.createLabel(L('provincia'));
-	scrollable.add(labelProvincia);
+	var stringProvincia = L('provincia');
+	scrollable.add(self.createLabel(stringProvincia + stringRequired));
 	
 	self.arrayProvincies = Ti.App.dB.getProvinces();
-	var pickerProvincia = self.createPicker(self.arrayProvincies,"onProvinceChanged");
+	var pickerProvincia = self.createPicker(self.arrayProvincies,"onProvinceChanged",null,stringDropdown + " "+ stringProvincia.toLowerCase() );
 	scrollable.add(pickerProvincia);
 	
 	// codi poblacio
-	var labelPoblacio = self.createLabel(L('poblacio'));
-	scrollable.add(labelPoblacio);
+	var stringPoblacio = L('poblacio');
+	scrollable.add(self.createLabel(stringPoblacio + stringRequired));
 	
-	//var textPoblacio = self.createTextField("","");
-	//self.arrayInicialCities = Ti.App.dB.getCities(self.arrayProvincies[0]);
-	self.arrayCities = [];//self.arrayInicialCities;
-	var pickerPoblacio = self.createPicker(self.arrayCities,"onCityChanged");
+	self.arrayCities = [];
+	var pickerPoblacio = self.createPicker(self.arrayCities,"onCityChanged",null,stringDropdown +" " + stringPoblacio.toLowerCase());
 	scrollable.add(pickerPoblacio);	
 	self.pickerPoblacio = pickerPoblacio;
 	
 	// colegi electoral
-	var labelColegi = self.createLabel(L('collegi_electoral'));
-	scrollable.add(labelColegi);
-	//self.arrayInicialCollegis = Ti.App.dB.getCollegis(self.arrayInicialCities[0]);
-	self.arrayCollegis = [];//self.arrayInicialCollegis;
-	//var textColegi = self.createTextField("",L('exemple_carrer'));
-	var pickerColegi = self.createPicker(self.arrayCollegis);
+	var stringColegi = L('collegi_electoral');
+	scrollable.add(self.createLabel(stringColegi + stringRequired));
+	self.arrayCollegis = [];
+	var pickerColegi = self.createPicker(self.arrayCollegis,null,null,stringDropdown + " " + stringColegi.toLowerCase());
 	scrollable.add(pickerColegi);
 	self.pickerColegi = pickerColegi;
 	
 	// partit afectat
-	var labelPartit = self.createLabel(L('partit_afectat'));
-	scrollable.add(labelPartit);
+	var stringPartit = L('partit_afectat');
+	scrollable.add(self.createLabel(stringPartit + stringRequired));
 	
 	// TODO: unharcode partits list
 	self.arrayPartits = [
@@ -172,15 +169,14 @@ function ReportWindow(title) {
 		"Unión, Progreso y Democracia (UPyD)",
 		"Vía Democrática (VD)"
 	];
-	var pickerPartit = self.createPicker(self.arrayPartits,null, true);
+	var pickerPartit = self.createPicker(self.arrayPartits, null, true, stringDropdown + " " + stringPartit.toLowerCase());
 	scrollable.add(pickerPartit);
 
-	
 	// causa incidencia
-	var labelCausa = self.createLabel(L('causa'));
-	scrollable.add(labelCausa);
+	var stringCausa = L('causa');
+	scrollable.add(self.createLabel(stringCausa + stringRequired));
 	
-	// TODO: unhardcode causes list
+	// TODO: unhardcode and translate causes list
 	self.arrayCauses = [
 		'Absència de paperetes',
 		'Paperetes ocultes o no accessibles',
@@ -188,25 +184,23 @@ function ReportWindow(title) {
 		'Persona impedint l\'exercici del vot',
 		'Altres'
 	];
-	var pickerCausa = self.createPicker(self.arrayCauses,null, true);
+	var pickerCausa = self.createPicker(self.arrayCauses,null, true, stringDropdown + " " + stringCausa.toLowerCase());
 	scrollable.add(pickerCausa);
 	
-		
 	// reportador
-	var labelReportador = self.createLabel(L('nom_del_reportador'));
-	scrollable.add(labelReportador);
+	var stringReportador = L('nom_del_reportador');
+	scrollable.add(self.createLabel(stringReportador + stringRequired));
 	var textReportador = self.createTextField(Ti.App.Properties.getString('reporter_name', ''),"");
 	scrollable.add(textReportador);
 	
 	// telefon/email reportador
-	var labelTelefon = self.createLabel(L('tel_reportador'));
-	scrollable.add(labelTelefon);
+	var stringTelefon = L('tel_reportador');
+	scrollable.add(self.createLabel(stringTelefon + stringRequired));
 	var textTelefon = self.createTextField(Ti.App.Properties.getString('reporter_phone', ''),"");
 	scrollable.add(textTelefon);
 	
 	// comentaris reportador
-	var labelComentaris = self.createLabel(L('comentaris'));
-	scrollable.add(labelComentaris);
+	scrollable.add(self.createLabel(L('comentaris')));
 	var textComentari = self.createTextField("","");
 	scrollable.add(textComentari);
 	
@@ -262,6 +256,12 @@ function ReportWindow(title) {
 				Ti.API.info('response is ',message);
 				if (message == "OK"){
 					var dialog = Ti.UI.createAlertDialog({message: L('report_enviat_ok'),ok: 'Ok',title: L('enviat_titol')}).show();
+					pickerCausa.setSelectedRow(0,0);
+					pickerCausa.setSelectedValue("");
+					pickerColegi.setSelectedRow(0,0);
+					pickerColegi.setSelectedValue("");
+					pickerPartit.setSelectedRow(0,0);
+					pickerPartit.setSelectedValue("");
 				}else{
 					var dialog = Ti.UI.createAlertDialog({message: L(message),ok: 'Ok',title: 'Error'}).show();
 				}
