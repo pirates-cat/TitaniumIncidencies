@@ -19,7 +19,7 @@
 	<string name="causa3">Persona condicionando el voto</string>
 	<string name="causa4">Persona impidiendo el voto</string>
 	<string name="other_causes">Otros</string>
-	<string name="all">Todoss</string>
+	<string name="all">Todos</string>
     <string name="nom_del_reportador">Nombre de quien ha dado el aviso</string>
     <string name="tel_reportador">Teléfono/Correo-e de quien ha dado el aviso</string>
     <string name="enviar">Enviar</string>
