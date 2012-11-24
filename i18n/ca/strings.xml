@@ -14,6 +14,11 @@
     <string name="poblacio">Població</string>
     <string name="collegi_electoral">Col·legi electoral</string>
     <string name="causa">Causa</string>
+	<string name="causa1">Absència de paperetes</string>
+	<string name="causa2">Paperetes ocultes o no accessibles</string>
+	<string name="causa3">Persona condicionant el vot</string>
+	<string name="causa4">Persona impedint l'exercici del vot</string>
+	<string name="causa5">Altres</string>
     <string name="nom_del_reportador">Nom del notificador</string>
     <string name="tel_reportador">Telèfon/Correu-e del notificador</string>
     <string name="enviar">Envia</string>
