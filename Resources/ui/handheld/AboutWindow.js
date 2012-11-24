@@ -41,6 +41,8 @@ function AboutWindow(title) {
 	self.createLine(scrollable,L('special_thanks'),L('special_thanks_to'));
 	self.createLine(scrollable,L('license'),L('license_type'));
 	self.createLine(scrollable,L('sourcecode'),L('sourcecode_url'),true);
+	self.createLine(scrollable,L('web_informes'),Ti.App.Properties.getString('public_url'),true);
+	
 	
 	return self;
 };
