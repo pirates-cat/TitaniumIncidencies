@@ -14,6 +14,11 @@
     <string name="poblacio">City</string>
     <string name="collegi_electoral">Polling station</string>
     <string name="causa">Reason</string>
+	<string name="causa1">No ballot paper</string>
+	<string name="causa2">Hidden or not accessible ballot paper</string>
+	<string name="causa3">Persona condicionant el vot</string>
+	<string name="causa4">Persona impedint l'exercici del vot</string>
+	<string name="causa5">Other</string>
     <string name="nom_del_reportador">Reporter's name</string>
     <string name="tel_reportador">Reporter's phone number/e-mail</string>
     <string name="enviar">Send</string>
