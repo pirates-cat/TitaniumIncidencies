@@ -16,9 +16,10 @@
     <string name="causa">Reason</string>
 	<string name="causa1">No ballot paper</string>
 	<string name="causa2">Hidden or not accessible ballot paper</string>
-	<string name="causa3">Persona condicionant el vot</string>
-	<string name="causa4">Persona impedint l'exercici del vot</string>
-	<string name="causa5">Other</string>
+	<string name="causa3">Someone forcing the polls</string>
+	<string name="causa4">Someone avoiding the polls</string>
+	<string name="other_causes">Other</string>
+	<string name="all">All</string>
     <string name="nom_del_reportador">Reporter's name</string>
     <string name="tel_reportador">Reporter's phone number/e-mail</string>
     <string name="enviar">Send</string>
@@ -43,4 +44,5 @@
     <string name="sourcecode">Source code:</string>
     <string name="sourcecode_url">https://github.com/pirata-cat/TitaniumIncidencies</string>
     <string name="dropdown_select">Select </string>
+    <string name="see_report">Veure report</string>
   </resources>

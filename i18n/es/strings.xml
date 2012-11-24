@@ -18,7 +18,8 @@
 	<string name="causa2">Papeletas ocultas o no accesibles</string>
 	<string name="causa3">Persona condicionando el voto</string>
 	<string name="causa4">Persona impidiendo el voto</string>
-	<string name="causa5">Otros</string>
+	<string name="other_causes">Otros</string>
+	<string name="all">Todoss</string>
     <string name="nom_del_reportador">Nombre de quien ha dado el aviso</string>
     <string name="tel_reportador">Teléfono/Correo-e de quien ha dado el aviso</string>
     <string name="enviar">Enviar</string>
@@ -43,4 +44,5 @@
     <string name="sourcecode">Código fuente:</string>
     <string name="sourcecode_url">https://github.com/pirata-cat/TitaniumIncidencies</string>
     <string name="dropdown_select">Elegir </string>
+    <string name="see_report">Ver informe</string>
   </resources>

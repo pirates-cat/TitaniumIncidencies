@@ -35,8 +35,11 @@ function ReportWindow(title) {
 	};
 	
 	self.createPicker = function(arrayData,onChangeEvent,removeUppercase,selectText){
-		
-		var returnedView = Ti.UI.createView({height:'50'}); 
+		var pickerHeight = '50';
+		if (Titanium.Platform.name == 'iPhone OS'){
+			pickerHeight = "200";
+		}
+		var returnedView = Ti.UI.createView({height:pickerHeight}); 
 		returnedView.onChangeEvent=onChangeEvent;
 		returnedView.setSelectedValue = function(value){
 			//Ti.API.info("setting selected value to " +value);
@@ -65,7 +68,7 @@ function ReportWindow(title) {
 			});
 			returnedView.picker = picker;
 			returnedView.add(picker);
-			//returnedView.height = picker.height;
+
 			// first will be a blank row
 			var titleText ="";
 			if (selectText!= null){
@@ -74,6 +77,7 @@ function ReportWindow(title) {
 			picker.add(Ti.UI.createPickerRow({title:titleText+ "                                                        ",valor:""}));
 			var rowText = null;	
 			var rowArray = [];
+			var rowCount = 0;
 			for (var id in arrayData){
 				if (removeUppercase != true){
 					rowText = returnedView.ucFirstLowerRest(arrayData[id]);
@@ -81,13 +85,14 @@ function ReportWindow(title) {
 					rowText = arrayData[id];
 				}
 				 rowArray.push(Ti.UI.createPickerRow({
-				 	
 					title:rowText + "                                                        ", // nasty titanium bug which centers text in pickers
 					valor:arrayData[id]
 				}));
-				
+				rowCount++;
 			}
-			picker.add(rowArray);
+			if(rowCount >0){
+				picker.add(rowArray);
+			}
 			if (arrayData == []){
 				Ti.API.debug("filling picker with  empty list");
 			}else{
@@ -149,7 +154,7 @@ function ReportWindow(title) {
 	
 	// TODO: unharcode partits list
 	self.arrayPartits = [
-		"Tots",
+		L("all"),
 		"Candidatura d'Unitat Popular - Alternativa d'Esquerres (CUP)",
 		"Ciutadans - Ciudadanos (Cs)",
 		"Convergència i Unió (CiU)",
@@ -175,16 +180,22 @@ function ReportWindow(title) {
 	// causa incidencia
 	var stringCausa = L('causa');
 	scrollable.add(self.createLabel(stringCausa + stringRequired));
+	var arrayCauses = [];	
+	var countCausa = 1;
+	var stringValueCausa = 'causa'+ countCausa;
+	var valueCausa = L(stringValueCausa);
+	// then we will pick as many causes as found in translations (causa1, causa2... etc)
+	while (valueCausa != stringValueCausa && valueCausa != null){
+		arrayCauses.push(valueCausa);
+		countCausa++;
+		stringValueCausa = 'causa'+countCausa;
+		valueCausa = L(stringValueCausa,stringValueCausa);
+	}
 	
-	// TODO: unhardcode and translate causes list
-	self.arrayCauses = [
-		'Absència de paperetes',
-		'Paperetes ocultes o no accessibles',
-		'Persona condicionant el vot', 
-		'Persona impedint l\'exercici del vot',
-		'Altres'
-	];
-	var pickerCausa = self.createPicker(self.arrayCauses,null, true, stringDropdown + " " + stringCausa.toLowerCase());
+	arrayCauses.sort();
+	// other causes is always the last value
+	arrayCauses.push(L('other_causes'))
+	var pickerCausa = self.createPicker(arrayCauses,null, true, stringDropdown + " " + stringCausa.toLowerCase());
 	scrollable.add(pickerCausa);
 	
 	// reportador
@@ -249,13 +260,25 @@ function ReportWindow(title) {
 			buttonReport.enabled = false;
 			
 			var xhr = Titanium.Network.createHTTPClient();
+			xhr.validatesSecureCertificate = false; // needed if the server is secure and android may complain in production build
 			xhr.onload = function(){
 				var list = JSON.parse(this.responseText);
 				var message = list['message'];
 				
 				Ti.API.info('response is ',message);
 				if (message == "OK"){
-					var dialog = Ti.UI.createAlertDialog({message: L('report_enviat_ok'),ok: 'Ok',title: L('enviat_titol')}).show();
+					var dialog = Ti.UI.createAlertDialog({
+						message: L('report_enviat_ok'),
+						buttonNames :['Ok',L('see_report')],
+						title: L('enviat_titol')
+					});
+					dialog.addEventListener('click', function(e){
+						if (e.index === 1){
+						  Titanium.Platform.openURL(Ti.App.Properties.getString('public_url'));
+						}
+					});
+					dialog.show();
+					
 					pickerCausa.setSelectedRow(0,0);
 					pickerCausa.setSelectedValue("");
 					pickerColegi.setSelectedRow(0,0);
@@ -292,7 +315,7 @@ function ReportWindow(title) {
 				'contacte_reportador':textTelefon.value,
 				'comentari':textComentari.value
 			}; 
-			Ti.API.info('data to send',dataToSend);
+			//Ti.API.info('data to send',dataToSend);
 			xhr.send(dataToSend);
 		}
 	});
@@ -301,8 +324,7 @@ function ReportWindow(title) {
 		height:55,
 		width:'100',
 		title:L('reset'),
-		left:10,
-		//bottom:10
+		left:10
 	});
 	if (Titanium.Platform.name == 'iPhone OS'){
 		scrollable.add(buttonClear);

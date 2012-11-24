@@ -11,6 +11,7 @@ function DataBase() {
 			self.db = Ti.Database.open('meses_electorals');
 			Ti.API.debug("db already installed");
 		}
+		// table meses_electorals is like this
 		//CREATE TABLE "meses_electorals" ("COLLEGI_ELECTORAL" ,"ADRECA" ,"POBLACIO" ,"PROVINCIA" )
 	};
 	
