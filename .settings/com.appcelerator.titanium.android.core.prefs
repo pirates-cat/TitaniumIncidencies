@@ -1,0 +1,11 @@
+android/ATTR_MINIFY=true
+android/ATTR_PROJECT_NAME=TitaniumIncidencies
+android/abi=armeabi
+android/distribute_path=/Users/Zynex/Desktop
+android/key_password=
+android/keystore_alias=TitaniumIncidencies
+android/keystore_password=trololol
+android/keystore_path=/Users/Zynex/Documents/TitaniumIncidencies_pass_trololol
+android/recent_output=/Users/Zynex/Desktop
+android/sdk_version=2.3.3
+eclipse.preferences.version=1

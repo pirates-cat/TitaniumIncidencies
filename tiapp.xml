@@ -11,11 +11,11 @@
     <sdk-version>3.2.3.GA</sdk-version>
     <id>cat.pirata.incidencieseleccions</id>
     <name>Incidencies Eleccions</name>
-    <version>2.0</version>
+    <version>2.3</version>
     <publisher>Ignasi Artigas Cucurella</publisher>
     <url>http://m.pirata.cat</url>
     <description>not specified</description>
-    <copyright>2012 by Ignasi Artigas</copyright>
+    <copyright>2014 by Ignasi Artigas</copyright>
     <icon>appicon.png</icon>
     <persistent-wifi>false</persistent-wifi>
     <prerendered-icon>false</prerendered-icon>
@@ -41,7 +41,7 @@
     </iphone>
     <android xmlns:android="http://schemas.android.com/apk/res/android">
         <manifest android:installLocation="auto"
-            android:versionCode="13" android:versionName="2.2"/>
+            android:versionCode="14" android:versionName="2.3"/>
         <uses-permission android:name="android.permission.INTERNET"/>
         <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
         <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
