@@ -1,0 +1,6 @@
+"/Users/Zynex/Dropbox/TiWorkspace/TitaniumIncidencies/build/android/gen/cat/pirata/incidencieseleccions/ApplicationStylesheet.java"
+"/Users/Zynex/Dropbox/TiWorkspace/TitaniumIncidencies/build/android/gen/cat/pirata/incidencieseleccions/AssetCryptImpl.java"
+"/Users/Zynex/Dropbox/TiWorkspace/TitaniumIncidencies/build/android/gen/cat/pirata/incidencieseleccions/IncidenciesEleccionsActivity.java"
+"/Users/Zynex/Dropbox/TiWorkspace/TitaniumIncidencies/build/android/gen/cat/pirata/incidencieseleccions/IncidenciesEleccionsAppInfo.java"
+"/Users/Zynex/Dropbox/TiWorkspace/TitaniumIncidencies/build/android/gen/cat/pirata/incidencieseleccions/IncidenciesEleccionsApplication.java"
+"/Users/Zynex/Dropbox/TiWorkspace/TitaniumIncidencies/build/android/gen/cat/pirata/incidencieseleccions/R.java"
