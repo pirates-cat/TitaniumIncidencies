@@ -2,8 +2,8 @@
 (function() {
 	//determine platform and form factor and render approproate components
 	//Ti.App.Properties.setString('server_url', 'http://192.168.1.54:8888/incidenciesEleccions/');
-	Ti.App.Properties.setString('server_url', 'https://xifrat.pirata.cat/incidencies25N-json/');
-	Ti.App.Properties.setString('public_url', 'https://xifrat.pirata.cat/incidencies25N/');
+	Ti.App.Properties.setString('server_url', 'https://xifrat.pirata.cat/incidencies9N-json/');
+	Ti.App.Properties.setString('public_url', 'https://xifrat.pirata.cat/incidencies9N/');
 	
 	Database = require('ui/common/Database');
 	Ti.App.dB = new Database();
